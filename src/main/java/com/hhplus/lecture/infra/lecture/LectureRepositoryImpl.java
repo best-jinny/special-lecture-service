@@ -35,4 +35,14 @@ public class LectureRepositoryImpl implements LectureRepository {
     public List<Lecture> findAllByUserId(Long userId) {
         return lectureJpaRepository.findAllByUserId(userId);
     }
+
+    @Override
+    public Optional<Lecture> findByIdForUpdate(Long id) {
+        return lectureJpaRepository.findByIdForUpdate(id);
+    }
+
+    @Override
+    public void save(Lecture lecture) {
+        lectureJpaRepository.save(lecture);
+    }
 }

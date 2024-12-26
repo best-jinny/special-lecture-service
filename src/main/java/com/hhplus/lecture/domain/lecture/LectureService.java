@@ -7,6 +7,7 @@ import com.hhplus.lecture.interfaces.dto.LectureResponse;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -20,8 +21,9 @@ public class LectureService {
     private final EnrollmentRepository enrollmentRepository;
 
     /* 수강신청 */
+    @Transactional
     public void register(Long lectureId, UserAccount userAccount) {
-        Lecture lecture = lectureRepository.findById(lectureId).orElseThrow(() -> new EntityNotFoundException("Lecture is not found"));
+        Lecture lecture = lectureRepository.findByIdForUpdate(lectureId).orElseThrow(() -> new EntityNotFoundException("Lecture is not found"));
         Enrollment enrollment = lecture.enroll(userAccount);
         enrollmentRepository.save(enrollment);
     }

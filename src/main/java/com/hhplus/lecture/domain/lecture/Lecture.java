@@ -47,7 +47,7 @@ public class Lecture {
     private int capacity;
 
     @Column
-    private int currentEnrollmentsCount;
+    private int currentEnrollmentsCount = 0;
 
     @OneToMany(mappedBy = "lecture", cascade = CascadeType.ALL)
     private List<Enrollment> enrollments = new ArrayList<>();
@@ -62,6 +62,7 @@ public class Lecture {
         this.endTime = endTime;
         this.venue = venue;
         this.capacity = capacity;
+        this.currentEnrollmentsCount = 0;
     }
 
     // 정원 초과 여부 확인

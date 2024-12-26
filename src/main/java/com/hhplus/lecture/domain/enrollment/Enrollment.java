@@ -10,6 +10,9 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @Entity
+@Table(uniqueConstraints={ @UniqueConstraint(
+                        name="uniqueKey",
+                        columnNames={"user_id", "lecture_id"})})
 public class Enrollment {
 
     @Id

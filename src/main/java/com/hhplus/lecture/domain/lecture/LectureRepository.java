@@ -12,4 +12,8 @@ public interface LectureRepository {
     List<Lecture> findAvailableLecturesOnDate(LocalDate date);
 
     List<Lecture> findAllByUserId(Long userId);
+
+    Optional<Lecture> findByIdForUpdate(Long id);
+
+    void save(Lecture lecture);
 }
